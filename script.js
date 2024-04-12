@@ -4,15 +4,13 @@ import { Document, VectorStoreIndex, SimpleDirectoryReader } from "npm:llamainde
 
 // Define an async function to handle loading and querying operations
 async function loadDataAndQuery() {
-    const keys = await mod.load({ export: true }); // read API key from .env
-
+    const keys = await mod.load({ export: true }); // Read API key from .env
     const documents = await new SimpleDirectoryReader().loadData({ directoryPath: "./data" });
     const index = await VectorStoreIndex.fromDocuments(documents);
     const queryEngine = index.asQueryEngine();
     const response = await queryEngine.query({ query: "What did the author do in college?" });
 
-    console.log(response.toString());
+    // Update the webpage with the response
+    document.getElementById('responseOutput').textContent = JSON.stringify(response, null, 2);
 }
 
-// Call the function
-loadDataAndQuery();
