@@ -1,48 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Data Query</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    pre {
-        background-color: #f4f4f4;
-        border: 1px solid #ddd;
-        padding: 10px;
-        border-radius: 5px;
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Response</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Data Query Interface</h1>
-<button onclick="fetchData()">Fetch Data</button>
-<div id="output"></div>
-
-<script>
-async function fetchData() {
-    // Mocking an API response since we cannot execute the original Deno code here
-    const response = {
-        status: 'Success',
-        data: [
-            { question: 'What did the author do in college?', answer: 'Studied literature' }
-        ]
-    };
-
-    // Display the response in the 'output' div as formatted JSON
-    document.getElementById('output').innerHTML = `<pre>${JSON.stringify(response, null, 2)}</pre>`;
-}
-
-// Function from your original code adapted for browser environment
-// You should replace this mock function with actual data fetching from your backend/API
-</script>
+    <div id="responseContainer">
+        <h1>Query Response</h1>
+        <p id="responseOutput"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
