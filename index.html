@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realm of Random Facts</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Data Query</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    pre {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
-    <button id="factButton">Summon Fact</button>
-    <div id="factDisplay">Your random fact will appear here...</div>
-    <script src="script.js"></script>
+<h1>Data Query Interface</h1>
+<button onclick="fetchData()">Fetch Data</button>
+<div id="output"></div>
+
+<script>
+async function fetchData() {
+    // Mocking an API response since we cannot execute the original Deno code here
+    const response = {
+        status: 'Success',
+        data: [
+            { question: 'What did the author do in college?', answer: 'Studied literature' }
+        ]
+    };
+
+    // Display the response in the 'output' div as formatted JSON
+    document.getElementById('output').innerHTML = `<pre>${JSON.stringify(response, null, 2)}</pre>`;
+}
+
+// Function from your original code adapted for browser environment
+// You should replace this mock function with actual data fetching from your backend/API
+</script>
 </body>
 </html>
