@@ -1,16 +1,27 @@
-// Importing modules
-import * as mod from "https://deno.land/std@0.213.0/dotenv/mod.ts";
-import { Document, VectorStoreIndex, SimpleDirectoryReader } from "npm:llamaindex@0.1.8";
+const documents = [
+    { content: "John studied Computer Science in college." },
+    { content: "Jane majored in Biology and minored in Chemistry." },
+    { content: "Mike wrote a thesis on Data Structures." }
+];
 
-// Define an async function to handle loading and querying operations
-async function loadDataAndQuery() {
-    const keys = await mod.load({ export: true }); // Read API key from .env
-    const documents = await new SimpleDirectoryReader().loadData({ directoryPath: "./data" });
-    const index = await VectorStoreIndex.fromDocuments(documents);
-    const queryEngine = index.asQueryEngine();
-    const response = await queryEngine.query({ query: "What did the author do in college?" });
-
-    // Update the webpage with the response
-    document.getElementById('responseOutput').textContent = JSON.stringify(response, null, 2);
+function performSearch() {
+    const query = document.getElementById('searchQuery').value.toLowerCase();
+    const results = documents.filter(doc => doc.content.toLowerCase().includes(query));
+    displayResults(results);
 }
 
+function displayResults(results) {
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.innerHTML = '';
+    if (results.length === 0) {
+        resultsContainer.innerHTML = '<p>No results found.</p>';
+    } else {
+        const resultList = document.createElement('ul');
+        results.forEach(result => {
+            const item = document.createElement('li');
+            item.textContent = result.content;
+            resultList.appendChild(item);
+        });
+        resultsContainer.appendChild(resultList);
+    }
+}

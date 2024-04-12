@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Query Response</title>
+    <title>Document Search</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="responseContainer">
-        <h1>Query Response</h1>
-        <button onclick="loadDataAndQuery()">Load Query</button>
-        <p id="responseOutput">Click the button to load query response...</p>
+    <div class="search-container">
+        <input type="text" id="searchQuery" placeholder="Enter search query...">
+        <button onclick="performSearch()">Search</button>
     </div>
-    <script src="script.js"></script>
+    <div id="results"></div>
+
+    <script src="app.js"></script>
 </body>
 </html>
