@@ -11,7 +11,7 @@ async function loadDataAndQuery() {
     const queryEngine = index.asQueryEngine();
     const response = await queryEngine.query({ query: "What did the author do in college?" });
 
-    console.log(response);
+    console.log(response.toString());
 }
 
 // Call the function
